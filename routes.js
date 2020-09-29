@@ -1,6 +1,6 @@
 const express = require("express");
 const routes = express.Router();
-const BlogController = require("./src/app/Controller/BlogController");
+const PostController = require("./src/app/Controller/PostController");
 const UserController = require("./src/app/Controller/UserController");
 
 //----------------------------------------------- USER CRUD ---------------------------------------------
@@ -18,7 +18,7 @@ routes.get("/login", function(req, res) {
 
 //login logic
 routes.post("/login", passport.authenticate("local", {
-    successRedirect: "/blogs",
+    successRedirect: "/posts",
     failureRedirect: "/login"
 }), function(req, res){
     console.log("logado res", res)
@@ -35,34 +35,34 @@ routes.get("/logout", function(req, res) {
 
 //HOME ROUTE
 routes.get("/", function(req, res) {
-    res.redirect("/blogs");
+    res.redirect("/posts");
 });
 
 //POSTS RESTFUL ROUTES
-routes.get("/blogs", BlogController.findPosts);
+routes.get("/posts", PostController.findPosts);
 
-routes.get("/blogs/new", function(req, res) {
+routes.get("/posts/new", isLoggedIn, function(req, res) {
     res.render("new", {isLoggedIn: req.isAuthenticated()}); 
 });
 
-routes.post("/blogs", isLoggedIn, BlogController.createPost);
+routes.post("/posts", isLoggedIn, PostController.createPost);
 
-routes.get("/blogs/:id", BlogController.findPostToShow);
+routes.get("/posts/:id", PostController.findPostToShow);
 
 //EDIT ROUTE
-routes.get("/blogs/:id/edit", BlogController.findPostToEdit);
+routes.get("/posts/:id/edit", PostController.findPostToEdit);
 
 //UPDATE REQUEST
-routes.put("/blogs/:id", BlogController.findPostByIdAndUpdate);
+routes.put("/posts/:id", PostController.findPostByIdAndUpdate);
 
 //DELETE REQUEST
-routes.delete("/blogs/:id", BlogController.findPostByIdAndRemove);
+routes.delete("/posts/:id", PostController.findPostByIdAndRemove);
 
 function isLoggedIn(req, res, next){
     if(req.isAuthenticated()){
         return next();
     }
-    res.redirect("/blogs");
+    res.redirect("/login");
 }
 
 module.exports = routes;

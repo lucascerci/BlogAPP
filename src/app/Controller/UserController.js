@@ -9,8 +9,7 @@ passport.deserializeUser(User.deserializeUser());
 class UserController {
     async createUser(req, res) {
       await User.register(new User({username: req.body.username}), req.body.password)
-      .then((response) => {
-          console.log("response", response)
+      .then(() => {
           passport.authenticate("local")(req, res, function(){
             res.redirect("/blogs");
           });

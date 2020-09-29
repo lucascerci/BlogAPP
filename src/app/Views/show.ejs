@@ -4,19 +4,19 @@
 
     
     
-    <div class="ui huge header"><%= blog.title %></div>
+    <div class="ui huge header"><%= post.title %></div>
     <div class="ui top attached ">
         <div class="item">
-            <img class="ui centered rounded image" src="<%= blog.image %>">
+            <img class="ui centered rounded image" src="<%= post.image %>">
             <div class="content">
-                 <span><%= blog.created.toDateString() %></span>
+                 <span><%= post.created.toDateString() %></span>
             </div>
             <div class="discription">
-                <p> <%= blog.body %> </p>
+                <p> <%= post.body %> </p>
             </div>
             <div class="buttons">
-                <a class="ui big blue basic button" href="/blogs/<%= blog._id%>/edit">Edit</a>
-                <form id="delete" action="/blogs/<%= blog._id%>?_method=DELETE"method="POST">
+                <a class="ui big blue basic button" href="/posts/<%= post._id%>/edit">Edit</a>
+                <form id="delete" action="/posts/<%= post._id%>?_method=DELETE"method="POST">
                     <button class="ui big red basic button">Delete</button>
                 </form>
             </div>

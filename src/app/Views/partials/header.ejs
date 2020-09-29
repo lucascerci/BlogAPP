@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Blog app</title>
+        <title>post app</title>
         <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.css">
         <link href= "/public/assets/styles.css" rel="stylesheet" type="text/css" />
     </head>
     <body>
         <div class="ui fixed inverted menu">
             <div class="ui container">
-                <div class="header item"><i class="code icon"></i>Blog Site</div>
+                <div class="header item"><i class="code icon"></i>DreamPic</div>
                 <a href="/" class="item">Home</a>
-                <a href="/blogs/new" class="item">New Post</a>
+                <a href="/posts/new" class="item">New Post</a>
                 <% if(!isLoggedIn) { %>
-                    <a href="/login" class="item right">Login</a>
+                    <a href="/login" class="item right">Log In</a>
                     <a href="/register" class="item">Sign Up!</a>
                 <% } else { %>
                     <a href="/profile" class="item right">Profile</a>

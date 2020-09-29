@@ -13,7 +13,7 @@ class BlogController {
   async findPosts(req, res) {
     await Blog.find({})
     .then(blogs => {
-        return res.render("index", {blogs: blogs});
+        return res.render("index", {blogs: blogs, isLoggedIn: req.isAuthenticated()});
     })
     .catch(err => { console.log("erro ao buscar blogs", err) })
   }
@@ -55,9 +55,9 @@ async function findPost(req, res, isEdit) {
     await Blog.findById(req.params.id)
     .then(foundPost => {
         if(isEdit) {
-            return res.render("edit", {blog: foundPost});
+            return res.render("edit", {blog: foundPost, isLoggedIn: req.isAuthenticated()});
         } else {
-            return res.render("show", {blog: foundPost});
+            return res.render("show", {blog: foundPost, isLoggedIn: req.isAuthenticated()});
         }
     })
     .catch(err => { 

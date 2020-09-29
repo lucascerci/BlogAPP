@@ -1,8 +1,10 @@
-const express = require("express");
-const db = require("./src/database/config");
-const mongoose = require("mongoose");
-const bodyParser  = require("body-parser");
-const methodOverride  = require("method-override");
+const express               = require("express");
+const db                    = require("./src/database/config");
+const mongoose              = require("mongoose");
+const bodyParser            = require("body-parser");
+const methodOverride        = require("method-override");
+const passport              = require("passport");
+const User                  = require("./src/app/Models/User");
 
 class App {
   constructor() {
@@ -28,6 +30,16 @@ class App {
     this.express.use(express.json());
     this.express.use(bodyParser.urlencoded({extended: true}));
     this.express.use(methodOverride("_method"));
+    this.express.use(require("express-session")({
+      secret: "Rusty is the best and cutest dog in the world", //secret is used to encode and decode the sections
+      resave: false,
+      saveUninitialized: false
+    }));
+    this.express.use(passport.initialize());
+    this.express.use(passport.session());
+
+    passport.serializeUser(User.serializeUser());
+    passport.deserializeUser(User.deserializeUser());
   }
 
   routes() {

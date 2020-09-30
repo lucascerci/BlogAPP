@@ -5,7 +5,8 @@ const bodyParser            = require("body-parser");
 const methodOverride        = require("method-override");
 const passport              = require("passport");
 const User                  = require("./src/app/Models/User");
-const serverless = require('serverless-http');
+const serverless            = require('serverless-http');
+
 
 class App {
   constructor() {
@@ -48,4 +49,8 @@ class App {
   }
 }
 
-module.exports = serverless(new App().express);
+handler = serverless(new App().express);
+
+exports.handler = async (event, context) => {
+  return await handler(event, context);
+};

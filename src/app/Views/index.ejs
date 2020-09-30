@@ -1,30 +1,32 @@
 <% include ./partials/header %>
 
 <div class="ui main text container">
-    <div class="ui huge header">TITULO DO SITE</div>
     <div class="ui top attached segment">
-            <div class="ui divided items">
+            <div class="ui feed">
             <% posts.forEach(function(post){ %>
-            <div class="item">
-                <div class="image">
-                    <img src="<%= post.image %>">
-                </div>
-                <div class="content">
-                    <a class="header" href="/posts/<%=post._id%>"><%= post.title %></a>
-                    <div class="meta">
-                        <span><%= post.created.toDateString() %></span>
+                <div class="event">
+                    <div class="content">
+                      <div class="summary">
+                        <a class="user">
+                            <%= post.author.username %>
+                        </a> posted a new photo
+                        <div class="date">
+                            <%= post.created.toDateString() %>
+                        </div>
+                        <div class="extra images">
+                            <a><img class="img" src="<%= post.image %>"></a>
+                        </div>
+                      </div>
+                      <div class="meta">
+                        <a class="like">
+                          <i class="like icon"></i> 4 saves
+                        </a>
+                        <a class="like" href="/posts/<%=post._id%>">
+                            Read More
+                        </a>
+                      </div>
                     </div>
-                    <div class="description">
-                        <p><%= post.body.substring(0, 100) %>...</p>
-                    </div>
-                    <div class="extra">
-                         <a class="ui floated basic blue button" href="/posts/<%=post._id%>">
-                             Read More
-                             <i class="right chevron icon"></i>
-                         </a>
-                    </div>
-                </div>
-            </div>
+                  </div>
             <% }); %>
         </div>
     </div>

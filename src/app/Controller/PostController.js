@@ -29,6 +29,7 @@ class PostController {
   }
 
   async findPostByIdAndUpdate(req, res) {
+    console.log("inside edit")
     await Post.findByIdAndUpdate(req.params.id, req.body.Post)
     .then(() => {
         //TODO retornar algo pro usuario de que foi editado

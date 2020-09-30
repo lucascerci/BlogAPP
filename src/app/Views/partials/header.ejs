@@ -1,22 +1,35 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>post app</title>
+        <title>ImageLinks</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
         <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.css">
         <link href= "/public/assets/styles.css" rel="stylesheet" type="text/css" />
     </head>
     <body>
-        <div class="ui fixed inverted menu">
-            <div class="ui container">
-                <div class="header item"><i class="code icon"></i>DreamPic</div>
-                <a href="/" class="item">Home</a>
-                <a href="/posts/new" class="item">New Post</a>
-                <% if(!isLoggedIn) { %>
-                    <a href="/login" class="item right">Log In</a>
-                    <a href="/register" class="item">Sign Up!</a>
-                <% } else { %>
-                    <a href="/profile" class="item right">Profile</a>
-                    <a href="/logout" class="item">Logout</a>
-                <% } %>
+        <div class="ui attached stackable menu">
+                <div class="ui container">
+                    <a href="/" class="item">
+                        <i class="home icon"></i> Home
+                    </a>
+                    <a href="/" class="item">
+                        <i class="grid layout icon"></i> Browse
+                    </a>
+                    <div class="ui simple dropdown item">
+                        Account
+                        <i class="dropdown icon"></i>
+                        <div class="menu">
+                            <% if(!isLoggedIn) { %>
+                                <a href="/login" class="item right">Log In</a>
+                                <a href="/register" class="item">Sign Up!</a>
+                            <% } else { %>
+                                <a href="/profile" class="item right">Profile</a>
+                                <a href="/logout" class="item">Logout</a>
+                            <% } %>
+                        </div>
+                    </div>
+                    <div class="right item">
+                        <div class="ui input"><input type="text" placeholder="Search..."></div>
+                    </div>
             </div>
         </div>

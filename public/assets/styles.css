@@ -14,3 +14,11 @@ i.icon {
 #delete {
     display: inline;
 }
+
+body {
+    background-color: #DADADA;
+}
+
+.column {
+    max-width: 450px;
+}

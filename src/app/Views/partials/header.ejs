@@ -15,6 +15,11 @@
                     <a href="/" class="item">
                         <i class="grid layout icon"></i> Browse
                     </a>
+                    <% if(isLoggedIn) { %>
+                        <a href="/posts/new" class="item">
+                            <i class="image layout icon"></i> New Post
+                        </a>
+                    <% } %>
                     <div class="ui simple dropdown item">
                         Account
                         <i class="dropdown icon"></i>

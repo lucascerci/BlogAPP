@@ -1,35 +1,50 @@
 <% include ./partials/header %>
 
-<div class="ui main text container">
-    <div class="ui top attached segment">
-            <div class="ui feed">
-            <% posts.forEach(function(post){ %>
-                <div class="event">
-                    <div class="content">
-                      <div class="summary">
-                        <a class="user">
-                            <%= post.author.username %>
-                        </a> posted a new photo
-                        <div class="date">
-                            <%= post.created.toDateString() %>
-                        </div>
-                        <div class="extra images">
-                            <a><img class="img" src="<%= post.image %>"></a>
-                        </div>
-                      </div>
-                      <div class="meta">
-                        <a class="like">
-                          <i class="like icon"></i> 4 saves
-                        </a>
-                        <a class="like" href="/posts/<%=post._id%>">
-                            Read More
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-            <% }); %>
-        </div>
+
+<div class="ui segment container main" style="width: 50%;">
+  <div class="ui feed">
+    <% posts.forEach(function(post){ %>
+        <div class="event">
+            <div class="content">
+              <div class="summary">
+                <a class="user">
+                    <%= post.author.username %>
+                </a> posted a new photo
+                <div class="date">
+                    <%= post.created.toDateString() %>
+                </div>
+                <div class="extra images">
+                    <a><img class="img" src="<%= post.image %>"></a>
+                </div>
+              </div>
+              <div class="meta">
+                <a class="like">
+                  <i class="like icon"></i> 4 saves
+                </a>
+                <a class="like" href="/posts/<%=post._id%>">
+                    Read More
+                </a>
+              </div>
+            </div>
+          </div>
+    <% }); %>
+  </div>
+  <div class="ui left close rail">
+    <div class="ui segment">
+      Left Rail Content
     </div>
+  </div>
+  <div class="ui right close rail">
+    <div class="ui raised segment">
+      <a class="ui red ribbon label">Curiosities</a>
+      <span>Did you know ...</span>
+      <ul class="ui list">
+        <% curiosities.forEach(function(curiosity){ %>
+        <li> <%=curiosity.curiosity%></li>
+        <% }); %>
+      </ul>
+    </div>
+  </div>
 </div>
 
 <% include ./partials/footer %>

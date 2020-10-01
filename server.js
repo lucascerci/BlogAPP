@@ -7,7 +7,6 @@ const passport              = require("passport");
 const User                  = require("./src/app/Models/User");
 const serverless            = require('serverless-http');
 
-
 class App {
   constructor() {
     this.express = express();

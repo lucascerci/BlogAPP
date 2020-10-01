@@ -1,4 +1,5 @@
 const Post = require("../Models/Post");
+const wikipediaScrapping = require("../Scrap/curiosities");
 
 class PostController {
   async createPost(req, res) {
@@ -13,9 +14,16 @@ class PostController {
   }
 
   async findPosts(req, res) {
+    let curiosities = [];
+    await wikipediaScrapping().then(values => {
+      curiosities = values;
+    }).catch(err => {
+      console.log("err", err)
+    });
+
     await Post.find({}).populate('author')
     .then(posts => {
-        return res.render("index", {posts: posts, isLoggedIn: req.isAuthenticated()});
+        return res.render("index", {posts: posts, isLoggedIn: req.isAuthenticated(), curiosities: curiosities});
     })
     .catch(err => { console.log("erro ao buscar Posts", err) })
   }

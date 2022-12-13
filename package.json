@@ -11,7 +11,7 @@
   "dependencies": {
     "body-parser": "^1.18.3",
     "ejs": "^2.6.1",
-    "express": "^4.16.4",
+    "express": "^4.17.3",
     "express-session": "^1.17.1",
     "express-validator": "^6.6.1",
     "method": "^2.0.0",
